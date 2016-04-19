@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form action="/" method="POST">
+    {% csrf_token %}
+    Image URL <input type="text" name="url" size="100" value="{{ url_image }}"/>
+    <input type="submit">
+</form>
+{% if result %}
+<h3> Original Image</h3>
+<img src="{{ url_image }}"/>
+<h3> Similar Images</h3>
+{% for i in result %}
+    <img src="{{ i }}"/>
+{% endfor %}
+{% endif %}
+</body>
+</html>
