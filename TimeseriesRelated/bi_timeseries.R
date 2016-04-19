@@ -1,3 +1,6 @@
+#Rscript to generate time series
+library(ggplot2)
+library(scales)
 dir <- getwd()
 args <- commandArgs()
 print(args)
@@ -13,11 +16,10 @@ plot(birthstimeseries.stl)
 
 plot(birthstimeseries, xaxt = "n")
 tsp = attributes(birthstimeseries)$tsp
-dates = seq(as.Date("2000-01-01"), by = "month", along = birthstimeseries)
+dates = seq(as.Date("2005-01-01"), by = "month", along = birthstimeseries)
 axis(1, at = seq(tsp[1], tsp[2], along = birthstimeseries), labels = format(dates, "%Y-%m"))
-df = data.frame(date = seq(as.POSIXct("2000-01-01"), by = "month", length.out = 24), pcp = rnorm(24))
-library(ggplot2)
-library(scales)
-p = ggplot(data = df, aes(x = date, y = pcp)) + geom_line()
+df = data.frame(date = seq(as.POSIXct("2005-01-01"), by = "month", length.out = 36), totalcount = rnorm(36))
+p = ggplot(data = df, aes(x = date, y = totalcount), xlab("My x label") +
+             ylab("My y label")) + geom_line()
 p + scale_x_datetime(labels = date_format("%Y-%m"), breaks = date_breaks("months")) + theme(axis.text.x = element_text(angle = 45))
 dev.off()

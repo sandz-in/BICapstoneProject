@@ -12,9 +12,8 @@ then
     mkdir -p $path/Plots
 fi
 #for each csv file generate
-for i in "${files[@]}"
+for fileshort in "${files[@]}"
 do
-	fileshort=$i
 	Rscript $path/bi_timeseries.R $fileshort --save
 done
 
