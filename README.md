@@ -13,3 +13,6 @@ Further, we applied time series on each category of images to find the most popu
 * `cd place_recommendation_web`
 * `python manage.py runserver`
 
+**Time-Series Related:**
+* `run date extract python script`
+* `run test.sh to generate timeseries plots for each of the tags`
