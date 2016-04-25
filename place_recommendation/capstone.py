@@ -14,33 +14,8 @@ categories = ['beach', 'church', 'mountains', 'sculpture',
               'snow', 'hiking', 'river', 'forest', 'zoo', 'bridge', 'wildlife', 'castle'
               ]
 
-"""garden,sea
-'usa', 'travel', 'france', 'london', 'united+states', 'nature', 'europe', 'england',
-'japan',
-'music', 'beach', 'art', 'germany', 'canada', 'italy', 'uk', 'new+york', 'spain', 'san+francisco',
-'festival',
-'australia', 'paris', 'snow', 'nyc', 'landscape', 'street', 'deutschland', 'church', 'sunset',
-'taiwan', 'china',
-'sea', 'holiday', 'washington', 'united+kingdom', 'texas', 'river', 'chicago', 'florida', 'trees',
-'italia',
-'scotland', 'seattle', 'berlin', 'garden', 'tokyo', 'lake', 'island', 'mexico', 'vancouver',
-'downtown', 'dc',
-'india', 'christmas', 'barcelona', 'bridge', 'michigan', 'animals', 'ontario', 'new+york+city',
-'toronto',
-'europa', 'oregon', 'mountain', 'ocean', 'los+angeles', 'hiking', 'graffiti', 'mountains', 'belgium',
-'sculpture',
-'switzerland', 'austria', 'ireland', 'africa', 'brooklyn', 'greece', 'sun', 'brazil', 'thailand',
-'illinois',
-'manhattan', 'america', 'netherlands', 'portugal', 'virginia', 'arizona', 'hawaii', 'massachusetts',
-'sweden',
-'brasil', 'castle', 'great+britain', 'us', 'hotel', 'road', 'colorado', 'portland', 'new+zealand',
-'washington+dc',
-'amsterdam', 'ohio', 'singapore', 'argentina', 'forest', 'sydney', 'boston', 'coast', 'statue',
-'outdoors',
-'temple', 'finland', 'rome', 'sf', 'poland', 'la', 'bar', 'san+diego', 'sand']
-"""
-
-
+# Find the tags and their count from the datasets and store in a file.
+# The top categories are manually filtered to get the list of top categories.
 def gather_categories():
     cursor = train_collection.find({"field8": {"$ne": ""}})
     tags = []
@@ -57,7 +32,7 @@ def gather_categories():
     for key in tags_list:
         fil.write(str(key) + "\n")
 
-
+# Fetch the 150 image urls for each category.
 def generate_url():
     global_urls = []
     for category in categories:
@@ -88,7 +63,8 @@ def generate_url():
         fil.write(key + "\n")
     fil.close()
 
-
+# For each category generate the tags using Clarifai and its associated probability.
+# The new tags and probability are stored in the mongodb.
 def generate_top():
     global_tag_list = []
     for category in categories:
@@ -119,6 +95,6 @@ def generate_top():
     fil.close()
 
 
-
-generate_url()
-generate_top()
+if __name__ == '__main__':
+    generate_url()
+    generate_top()
