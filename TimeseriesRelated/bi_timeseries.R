@@ -1,4 +1,5 @@
-#Rscript to generate time series
+#Rscript to generate time series and plots of it on monthly basis
+
 library(ggplot2)
 library(scales)
 dir <- getwd()
