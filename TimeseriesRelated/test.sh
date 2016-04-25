@@ -1,5 +1,6 @@
+
+## This bash script generate plots for all the tags and save them.
 #!/bin/bash
-#author:samrudhi
 #get current directory
 path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo $path
