@@ -1,3 +1,8 @@
+'''
+This script will crawl through the data and extract user tags for all the images and write 
+them to a txt file.
+'''
+
 import csv
 import re
 import operator
