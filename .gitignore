@@ -60,3 +60,6 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+# Ignoring .DS_Store
+.DS_Store
