@@ -1,3 +1,10 @@
+'''
+This script will find the dates for all the images for a given tag and sort. 
+These dates are then grouped according to month and year for 15 years and dumped into 
+a csv which is then passed to R code for generating time series for each tag.
+'''
+
+
 import pymongo
 from pymongo import MongoClient
 import re
@@ -5,6 +12,7 @@ import pickle
 from datetime import datetime
 from collections import defaultdict
 import csv
+
 
 client =  MongoClient()
 db = client['flickr']
