@@ -1,3 +1,5 @@
+# Script to generate timeseries based on date of photos.
+
 import csv
 import re
 import pickle
